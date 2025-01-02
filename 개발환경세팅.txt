@@ -1,0 +1,2 @@
+1. 코드 개발 환경 - VS CODE
+2. GIT 및 Node.js(LTS) 설치
