@@ -11,10 +11,10 @@ const app = express();
 
 const PORT = 3000;
 // 라우팅
-const home = require("./routes/home"); // home.js 파일을 가져옴
+const home = require("./src/routes/home"); // home.js 파일을 가져옴
 
 // 앱 세팅
-app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs"); // npm i ejs -s 필요
 
 app.use("/", home); //  use - 미들웨어를 등록해주는 메서드
