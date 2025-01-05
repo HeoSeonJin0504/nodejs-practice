@@ -1,0 +1,10 @@
+1. npm install nodemon -g (전역으로) 설치, 라눅스 환경이면 앞에 sudo를 붙이면 OK
+2. nodemon ./bin/www.js 으로 서버 실행
+
+nodemon의 장점 - 서버를 켰다 껐다 반복하지 않아도 된다.
+
+!PowerShell의 실행 정책으로 스크립트 제한을 걸어 오류가 발생할 수 있다.
+해결 방법
+1. PoweShell을 관리자 권한으로 실행
+2. Set-ExecutionPolicy RemoteSigned 입력
+3. Y 입력
