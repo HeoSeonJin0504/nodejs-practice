@@ -17,6 +17,7 @@ const home = require("./src/routes/home"); // home.js 파일을 가져옴
 app.set("views", "./src/views");
 app.set("view engine", "ejs"); // npm i ejs -s 필요
 
+app.use(express.static(`${__dirname}/src/public`)); // 현재 app.js 파일 위치/src/public 경로를 정적경로로 추가
 app.use("/", home); //  use - 미들웨어를 등록해주는 메서드
 
 module.exports = app;
