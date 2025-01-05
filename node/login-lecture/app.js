@@ -15,9 +15,7 @@ app.set("view engine", "ejs"); // npm i ejs -s 필요
 
 app.use("/", home); //  use - 미들웨어를 등록해주는 메서드
 
-app.listen(PORT, function () {
-  console.log("서버 가동");
-});
+module.exports = app;
 
 // npm i express --save 로 모듈 설치
 // node app.js로 서버 가동
