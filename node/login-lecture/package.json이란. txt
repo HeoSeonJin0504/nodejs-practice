@@ -1,0 +1,18 @@
+1. 터미널에서 npm init 실행
+2. 엔터를 눌러 기본값으로 진행
+
+또 다른 방법 (기본값으로 세팅)
+npm init -y
+
+pacakage.json 설명
+name - 패키지 이름
+version - 배포 버전
+description - SW를 설명하는 텍스트
+main - 패키지의 메인 파일
+bin - 바이너리 (실행 파일)
+dependencies - 의존하고 있는 패키지 모듈 (사용할 때 영향을 미치는), node_modules가 없어도 얘를 보고 npm install로 필요한 모듈 설치가 가능하다다
+devDependencies - 개발에 필요한 패키지 모듈
+scripts - 패키지에서 사용하고 싶은 명령어
+author: SW를 만든 사람
+license: SW 라이센스
+
