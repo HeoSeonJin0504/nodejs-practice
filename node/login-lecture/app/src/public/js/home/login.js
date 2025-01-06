@@ -14,7 +14,7 @@ function login() {
     password: password.value,
   };
 
-  fetch("/login", {
+  fetch("/login", { // Restful API 강의 필독
     method: "POST", // POST 방식으로 서버에 요청
     headers: {
         "Content-Type": "application/json", // JSON 형태로 데이터를 보낸다
