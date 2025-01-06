@@ -13,4 +13,12 @@ function login() {
     id: id.value, // id의 value값을 가져와서 req 객체에 저장
     password: password.value,
   };
+
+  fetch("/login", {
+    method: "POST", // POST 방식으로 서버에 요청
+    headers: {
+        "Content-Type": "application/json", // JSON 형태로 데이터를 보낸다
+    },
+    body: JSON.stringify(req), // req 객체를 JSON 형태로 변환
+  })
 }
