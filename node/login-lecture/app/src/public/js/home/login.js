@@ -14,11 +14,23 @@ function login() {
     password: password.value,
   };
 
-  fetch("/login", { // Restful API 강의 필독
+  fetch("/login", {
+    // Restful API 강의 필독
     method: "POST", // POST 방식으로 서버에 요청
     headers: {
-        "Content-Type": "application/json", // JSON 형태로 데이터를 보낸다
+      "Content-Type": "application/json", // JSON 형태로 데이터를 보낸다
     },
     body: JSON.stringify(req), // req 객체를 JSON 형태로 변환
-  }).then((res) => res.json()).then(console.log); // 서버에서 받은 응답을 JSON 형태로 변환하여 콘솔에 출력
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.sucess) {
+        location.href = "/"; // 로그인 성공 시 홈 화면으로 이동
+      } else {
+        alert(res.msg); // 로그인 실패 시 메시지 출력
+      }
+    })
+    .catch((err) => {
+      console.error("로그인 중 서버 에러 발생");
+    });
 }
