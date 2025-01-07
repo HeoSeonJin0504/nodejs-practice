@@ -20,5 +20,5 @@ function login() {
         "Content-Type": "application/json", // JSON 형태로 데이터를 보낸다
     },
     body: JSON.stringify(req), // req 객체를 JSON 형태로 변환
-  });
+  }).then((res) => res.json()).then(console.log); // 서버에서 받은 응답을 JSON 형태로 변환하여 콘솔에 출력
 }
