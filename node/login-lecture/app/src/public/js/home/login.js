@@ -24,7 +24,7 @@ function login() {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.sucess) {
+      if (res.success) {
         location.href = "/"; // 로그인 성공 시 홈 화면으로 이동
       } else {
         alert(res.msg); // 로그인 실패 시 메시지 출력
