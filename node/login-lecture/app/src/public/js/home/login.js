@@ -4,7 +4,7 @@
 
 const id = document.querySelector("#id"), // querySelector - 질의선택자, 태그의 id가 id인 것을 가져온다
   password = document.querySelector("#password"),
-  loginBtn = document.querySelector("button"); // button 태그를 가져온다
+  loginBtn = document.querySelector("#button");
 
 loginBtn.addEventListener("click", login); // loginBtn을 클릭하면 login 함수를 실행
 
