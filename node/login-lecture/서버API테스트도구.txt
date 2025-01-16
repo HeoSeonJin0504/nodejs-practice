@@ -1,0 +1,21 @@
+1. curl
+- curl http://localhost:3000/login
+  (GET 요청을 보낸다.)
+- curl http://localhost:3000/login -X POST
+  (POST 요청을 보낸다.)
+- curl http://localhost:3000/login -X POST -d '{"id":"test12345", "password":"12345"}' -H "Content-Type: application/json"
+  (JSON 데이터를 포함한 POST 요청을 보낸다.)
+- curl http://localhost:3000/register -X POST -d '{"id":"test12345", "password":"12345"}' -H "Content-Type: application/json"
+  (JSON 데이터를 포함한 POST 요청을 보낸다.)
+
+2. PostMan
+- Google에 PostMan을 검색하여 다운로드
+- 요청 메서드 선택 (GET, POST, PUT, DELETE 등)
+- 주소창에 주소 입력
+- POST 선택 시, Body에서 raw를 선택 후, JSON으로 선택 {"id": "12345", "password": "1234"} 이런식으로 데이터 입력
+- Headers 탭에서 Content-Type을 application/json으로 설정
+- 탭 추가 및 Collections에서 폴더로 관리 가능
+- 요청을 저장하고 나중에 재사용 가능
+- 테스트 스크립트를 작성하여 요청 전후에 실행 가능
+
+자세한 내용 및 사용 영상상 -> https://youtu.be/0veQoK9V07k 참고!
