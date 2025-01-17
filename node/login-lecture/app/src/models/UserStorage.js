@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require("fs").promises; // 파일 시스템, promises - 비동기 처리에 효과적
+const db = require("../config/db");
 
 // UserStorage 클래스 생성 (클래스 안에 객체는 const 안쓴다)
 class UserStorage {
@@ -30,34 +30,19 @@ class UserStorage {
     return newUsers;
   }
 
-  static getUsers(isAll, ...fields) {
-    return fs
-      .readFile("./src/databases/users.json")
-      .then((data) => {
-        return this.#getUsers(data, isAll, fields);
-      })
-      .catch((err) => console.error(err));
-  }
+  static getUsers(isAll, ...fields) {}
 
   static getUserInfo(id) {
-    return fs
-      .readFile("./src/databases/users.json")
-      .then((data) => {
-        return this.#getUserInfo(data, id);
-      })
-      .catch((err) => console.error(err));
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM users WHERE id = ?", [id], (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data[0]);
+      });
+    });
   }
 
-  static async save(userInfo) {
-    const users = await this.getUsers(true); // 데이터 추가
-    if (users.id.includes(userInfo.id)) {
-      throw "이미 존재하는 아이디입니다.";
-    }
-    users.id.push(userInfo.id);
-    users.name.push(userInfo.name);
-    users.password.push(userInfo.password);
-    fs.writeFile("./src/databases/users.json", JSON.stringify(users)); // 데이터 저장
-    return { success: true };
-  }
+  static async save(userInfo) {}
 }
 module.exports = UserStorage;
