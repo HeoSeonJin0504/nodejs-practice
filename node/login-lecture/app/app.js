@@ -8,6 +8,8 @@
 //모듈
 const express = require("express");
 const bodyParser = require("body-parser"); // npm i body-parser -s 필요
+const dotenv = require("dotenv"); // npm i dotenv -s 필요
+dotenv.config();
 const app = express();
 
 const PORT = 3000;
