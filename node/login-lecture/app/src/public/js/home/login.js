@@ -9,6 +9,12 @@ const id = document.querySelector("#id"), // querySelector - 질의선택자, �
 loginBtn.addEventListener("click", login); // loginBtn을 클릭하면 login 함수를 실행
 
 function login() {
+  if (!id.value) {
+    return alert("아이디를 입력해주세요.");
+  }
+  if (!password.value) {
+    return alert("비밀번호를 입력해주세요.");
+  }
   const req = {
     id: id.value, // id의 value값을 가져와서 req 객체에 저장
     password: password.value,
@@ -27,6 +33,7 @@ function login() {
       if (res.success) {
         location.href = "/"; // 로그인 성공 시 홈 화면으로 이동
       } else {
+        if (res.err) return alert(res.err); // 에러 발생 시 에러 메시지 출력
         alert(res.msg); // 로그인 실패 시 메시지 출력
       }
     })

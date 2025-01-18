@@ -12,8 +12,9 @@ class UserStorage {
       db.query(query, [id], (err, data) => {
         if (err) {
           reject(`${err}`); // err가 오브젝트이기 때문에 문자열로 변환
+        } else {
+          resolve(data[0]);
         }
-        resolve(data[0]);
       });
     });
   }
@@ -27,8 +28,9 @@ class UserStorage {
         (err) => {
           if (err) {
             reject(`${err}`); // err가 오브젝트이기 때문에 문자열로 변환
+          } else {
+            resolve({ success: true });
           }
-          resolve({ success: true });
         }
       );
     });
