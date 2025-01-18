@@ -19,11 +19,6 @@ dotenv.config();
 // 라우팅
 const home = require("./src/routes/home"); // home.js 파일을 가져옴
 
-const logger = require("./src/config/logger");
-logger.error("Hello World");
-
-
-
 // 앱 세팅
 app.set("views", "./src/views");
 app.set("view engine", "ejs"); // npm i ejs -s 필요

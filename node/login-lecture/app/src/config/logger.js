@@ -1,26 +1,43 @@
 const { createLogger, transports, format } = require("winston");
-const { combine, colorize, timestamp, label, json, simple, printf } = format;
+const { combine, colorize, timestamp, label, simple, printf } = format;
 
 const printFormat = printf(({ timestamp, label, level, message }) => {
   return `${timestamp} [${label}] ${level} : ${message}`;
 });
 
-const printLogFormat = combine(
-  label({
-    label: "백엔드 맛보기",
+const printLogFormat = {
+  file: combine(
+    label({
+      label: "백엔드 맛보기",
+    }),
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    printFormat
+  ),
+  console: combine(colorize(), simple()),
+};
+
+const opts = {
+  file: new transports.File({
+    filename: "./logs/access.log",
+    dirname: "./logs",
+    level: "info",
+    format: printLogFormat.file,
   }),
-  colorize(),
-  timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-  printFormat
-);
+  console: new transports.Console({
+    level: "info",
+    format: printLogFormat.console,
+  }),
+};
 
 const logger = createLogger({
-  transports: [
-    new transports.Console({
-      level: "info",
-      format: printLogFormat,
-    }),
-  ],
+  transports: [opts.file],
 });
+
+// 개발 환경일 때만 콘솔 출력
+if (process.env.NODE_ENV !== "production") {
+  logger.add(opts.console);
+}
 
 module.exports = logger;
