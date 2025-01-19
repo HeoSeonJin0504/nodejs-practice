@@ -7,15 +7,15 @@ const logger = require("../../config/logger");
 // get 방식으로 접속했을 때, 렌더링 할 수 있게 오브젝트로 생성
 const output = {
   home: (req, res) => {
-    logger.info(`GET / 200 "홈 화면으로 이동"`);
+    logger.info(`GET / 304 "홈 화면으로 이동"`);
     res.render("home/index");
   },
   login: (req, res) => {
-    logger.info(`GET /login 200 "로그인 화면으로 이동"`);
+    logger.info(`GET /login 304 "로그인 화면으로 이동"`);
     res.render("home/login");
   },
   register: (req, res) => {
-    logger.info(`GET /register 200 "회원가입 화면으로 이동"`);
+    logger.info(`GET /register 304 "회원가입 화면으로 이동"`);
     res.render("home/register");
   },
 };
@@ -32,14 +32,14 @@ const process = {
     log(response, url);
     return res.status(url.status).json(response);
   },
-  
+
   register: async (req, res) => {
     const user = new User(req.body);
     const response = await user.register();
     const url = {
       method: "POST",
       path: "/register",
-      status: response.err ? 400 : 200,
+      status: response.err ? 409 : 201, // 회원가입의 경우 새로운 데이터를 생성하기 때문에 201
     };
     log(response, url);
     return res.status(url.status).json(response);
