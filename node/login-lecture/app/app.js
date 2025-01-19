@@ -7,8 +7,8 @@
 
 //모듈
 const express = require("express");
-const bodyParser = require("body-parser"); // npm i body-parser -s 필요c
-const dotenv = require("dotenv"); // npm i dotenv -s 필
+const bodyParser = require("body-parser"); // npm i body-parser -s 필요
+const dotenv = require("dotenv"); // npm i dotenv -s 필요
 
 const app = express();
 dotenv.config();
